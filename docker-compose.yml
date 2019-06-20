@@ -1,0 +1,18 @@
+version: '3'
+services:
+  protonmail-bridge:
+    build:
+      context: .
+      args:
+        PROTONMAIL_BRIDGE_VERSION: ${PROTONMAIL_BRIDGE_VERSION}
+        SMTP_PORT: ${SMTP_PORT}
+        IMAP_PORT: ${IMAP_PORT}
+    environment:
+      PROTONMAIL_LOGIN: ${PROTONMAIL_LOGIN}
+      PROTONMAIL_PASSWORD: ${PROTONMAIL_PASSWORD}
+      PROTONMAIL_EXTRA_2FA: ${PROTONMAIL_EXTRA_2FA}
+      SMTP_PORT: ${SMTP_PORT}
+      IMAP_PORT: ${IMAP_PORT}
+    ports:
+      - "127.0.0.1:${SMTP_PORT}:${SMTP_PORT}"
+      - "127.0.0.1:${IMAP_PORT}:${IMAP_PORT}"
