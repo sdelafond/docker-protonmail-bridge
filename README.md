@@ -29,7 +29,7 @@ Configuring your email client
 For credentials, use the "Username: <login>" and "Password: <passwd>"
 that the service prints when it start.
 
-The URL for the IMAP service is `localhost:2043`, and the SMTP one is
+The URL for the IMAP service is `localhost:2143`, and the SMTP one is
 `localhost:2025`.
 
 Client compatibility
@@ -46,7 +46,7 @@ defaults
   fetchall
 #  keep
 
-poll 127.0.0.1 service 2043 with protocol imap auth password
+poll 127.0.0.1 service 2143 with protocol imap auth password
   user <login> there is seb here
   password <passwd>
 ```
@@ -75,14 +75,14 @@ IMAP
 
 Full certificate information:
 ```
-echo | openssl s_client -connect localhost:2043 -starttls imap | openssl x509 -noout -text
+echo | openssl s_client -connect localhost:2143 -starttls imap | openssl x509 -noout -text
 ```
 
 Fingerprints:
 ```
-echo | openssl s_client -connect localhost:2043 -starttls imap | openssl x509 -noout -fingerprint -md5
-echo | openssl s_client -connect localhost:2043 -starttls imap | openssl x509 -noout -fingerprint -sha1
-echo | openssl s_client -connect localhost:2043 -starttls imap | openssl x509 -noout -fingerprint -sha256
+echo | openssl s_client -connect localhost:2143 -starttls imap | openssl x509 -noout -fingerprint -md5
+echo | openssl s_client -connect localhost:2143 -starttls imap | openssl x509 -noout -fingerprint -sha1
+echo | openssl s_client -connect localhost:2143 -starttls imap | openssl x509 -noout -fingerprint -sha256
 [...]
 ```
 
