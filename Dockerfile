@@ -27,6 +27,7 @@ RUN setcap 'cap_net_bind_service=+ep' /usr/bin/socat
 # copy entrypoint and related files to dedicated user's home directory
 RUN useradd -m -s /bin/bash ${USER}
 COPY entrypoint.sh gpg-key-parameters.txt /home/${USER}/
+RUN chown -R protonmail: /home/${USER}
 
 # document which ports are exposed
 EXPOSE ${SMTP_PORT}
