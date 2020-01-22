@@ -20,7 +20,7 @@ if ! [ -d ~/.password-store ] ; then
 fi
 
 if ! [ -f ~/.cache/protonmail/bridge ] ; then
-  echo -e "login\n${PROTONMAIL_LOGIN}\n${PROTONMAIL_PASSWORD}\n${PROTONMAIL_EXTRA_2FA}" | ${BRIDGE}
+  echo -e "login\n${PROTONMAIL_LOGIN}\n${PROTONMAIL_PASSWORD}\n${PROTONMAIL_EXTRA_2FA}" | ${BRIDGE} ${BRIDGE_EXTRA_ARGS}
 fi
 
 # socat will make the connection appear to come from 127.0.0.1, since
@@ -30,4 +30,4 @@ socat TCP-LISTEN:${IMAP_PORT},fork TCP:127.0.0.1:${BRIDGE_IMAP_PORT} &
 
 # display account information, then keep stdin open
 [ -e ${FIFO} ] || mkfifo ${FIFO}
-{ echo info ; cat ${FIFO} ; } | ${BRIDGE}
+{ echo info ; cat ${FIFO} ; } | ${BRIDGE} ${BRIDGE_EXTRA_ARGS}
