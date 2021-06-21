@@ -9,6 +9,7 @@ services:
         IMAP_PORT:
     environment:
       BRIDGE_EXTRA_ARGS:
+      BRIDGE_SPLIT_ADDRESS_MODE:
       PROTONMAIL_LOGIN:
       PROTONMAIL_PASSWORD:
       PROTONMAIL_EXTRA_2FA:

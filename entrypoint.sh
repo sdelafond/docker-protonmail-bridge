@@ -23,6 +23,10 @@ if ! [ -f ~/.cache/protonmail/bridge ] ; then
   echo -e "login\n${PROTONMAIL_LOGIN}\n${PROTONMAIL_PASSWORD}\n${PROTONMAIL_EXTRA_2FA}" | ${BRIDGE} ${BRIDGE_EXTRA_ARGS}
 fi
 
+if [ "${BRIDGE_SPLIT_ADDRESS_MODE}" = true ] ; then
+  echo -e "change mode\nyes\n" | ${BRIDGE} ${BRIDGE_EXTRA_ARGS}
+fi
+
 # socat will make the connection appear to come from 127.0.0.1, since
 # the ProtonMail Bridge expects that
 socat TCP-LISTEN:${SMTP_PORT},fork TCP:127.0.0.1:${BRIDGE_SMTP_PORT} &
