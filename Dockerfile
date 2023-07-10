@@ -17,6 +17,7 @@ RUN apt-get update -q && \
         ./${PROTONMAIL_BRIDGE_FILE} \
 	ca-certificates \
  	pass \
+        procps \
  	socat \
  	libcap2-bin && \
     apt-get clean && \

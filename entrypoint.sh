@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 set -e
 
@@ -32,6 +32,8 @@ fi
 socat TCP-LISTEN:${SMTP_PORT},fork TCP:127.0.0.1:${BRIDGE_SMTP_PORT} &
 socat TCP-LISTEN:${IMAP_PORT},fork TCP:127.0.0.1:${BRIDGE_IMAP_PORT} &
 
-# display account information, then keep stdin open
-[ -e ${FIFO} ] || mkfifo ${FIFO}
-{ echo info ; cat ${FIFO} ; } | ${BRIDGE} ${BRIDGE_EXTRA_ARGS}
+# # display account information, then keep stdin open
+# [ -e ${FIFO} ] || mkfifo ${FIFO}
+# { echo info ; cat ${FIFO} ; } | ${BRIDGE} ${BRIDGE_EXTRA_ARGS} &
+
+while sleep 3600 ; do : ; done
